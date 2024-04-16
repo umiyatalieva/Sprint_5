@@ -7,15 +7,17 @@ from conftest import driver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-# Создаем класс для тестирования входа через   "Зарегистррироваться"
-class TestEnterByFormRegistration:
-    def test_registration(self,driver):
+
+class TestLogin:
+
+#Тестирование входа через  ссылку "Зарегистррироваться"
+    def test_on_linck_registration(self,driver):
         driver.get("https://stellarburgers.nomoreparties.site/register")
 
 
 # Заполнение полей регистрации
         name_input = driver.find_element(*BurgerLocators.LOGIN_NAME_INPUT)
-        name_input.send_keys("Ума")
+        name_input.send_keys(*BurgersServiceTestData.AUTH_NAME)
 
 
         email_input=driver.find_element(*BurgerLocators.LOGIN_EMAIL_INPUT)
@@ -23,7 +25,7 @@ class TestEnterByFormRegistration:
 
 
         email_password = driver.find_element(*BurgerLocators.LOGIN_PASSWORD_INPUT)
-        email_password.send_keys("123456")
+        email_password.send_keys(*BurgersServiceTestData.AUTH_PASSWORD)
 
 
 # Клик по кнопке  зарегистрироваться
@@ -40,7 +42,7 @@ class TestEnterByFormRegistration:
 
 
         email_password = driver.find_element(*BurgerLocators.LOGIN_PASSWORD_INPUT)
-        email_password.send_keys("123456")
+        email_password.send_keys(*BurgersServiceTestData.AUTH_PASSWORD)
 
 
 

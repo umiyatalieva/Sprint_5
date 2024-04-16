@@ -7,9 +7,11 @@ from data import BurgersServiceTestData
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-# Создаем класс для тестирования входа через "Войти в аккаунт"
-class TestClickBtnPersonalAccount:
-    def test_registration(self,driver):
+# Создаем класс для тестирования входа
+class TestLogin:
+
+# Тестирование вход через "Войти в аккаунт"
+    def test_enter_on_goto_account(self,driver):
 
 
 # Клик по кнопке "Войти в аккаунт"
@@ -24,7 +26,7 @@ class TestClickBtnPersonalAccount:
 
 
         email_password = driver.find_element(*BurgerLocators.LOGIN_PASSWORD_INPUT)
-        email_password.send_keys("123456")
+        email_password.send_keys(*BurgersServiceTestData.AUTH_PASSWORD)
 
 
 

@@ -6,8 +6,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 # Создаем класс для тестирования перехода по клику в "Личный кабинет"
-class TestClickTransitionOnPersonalAccount:
-    def test_registration(self, driver):
+class TestClickGoToPersonalAccount:
+
+# Тестирование перехода через Личный кабинет
+    def test_click_goto_pers_account(self, driver): # исправлено
 
 
 # Клик по кнопке "войти в аккаунт"
@@ -22,13 +24,11 @@ class TestClickTransitionOnPersonalAccount:
 
 
         email_password = driver.find_element(*BurgerLocators.LOGIN_PASSWORD_INPUT)
-        email_password.send_keys("123456")
+        email_password.send_keys(*BurgersServiceTestData.AUTH_PASSWORD)
 
 
 # Клик по кнопке  "войти"
         driver.find_element(*BurgerLocators.LOGIN_SUBMIT_PERSONAL_ACCOUNT_BUTTON).click()
-
-
 
 
 # Клик по кнопке "Личный кабинет"

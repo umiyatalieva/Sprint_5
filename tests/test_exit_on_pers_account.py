@@ -6,9 +6,11 @@ from conftest import driver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-# Создаем класс для тестирования кнопки "Выход" в Личном кабинете
-class TestExitOnPersAccount:
-    def test_registration(self, driver):
+# Создаем класс дл тестирования перехода через Личный кабинет
+class TestOnPersonalAccount:
+
+# тестирования кнопки "Выход" в Личном кабинете
+    def test_exit_on_personal_account(self, driver):
 
 
 # Клик по кнопке "войти в аккаунт"
@@ -23,7 +25,7 @@ class TestExitOnPersAccount:
 
 
         email_password = driver.find_element(*BurgerLocators.LOGIN_PASSWORD_INPUT)
-        email_password.send_keys("123456")
+        email_password.send_keys(*BurgersServiceTestData.AUTH_PASSWORD)
 
 
 

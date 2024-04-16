@@ -5,15 +5,17 @@ from conftest import driver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-# Создаем класс для тестирования входа через "Восстановить пароль"
-class TestFormForgotPassword:
-    def test_registration(self,driver):
+# Создаем класс для тестирования входа
+class TestLogin:
+
+# Тестирование вход через ссылку "Восстановить пароль"
+    def test_enter_linck_forgot_password(self,driver):
 
 # Клик по кнопке "войти в аккаунт"
         btn_login_sumbit_main=driver.find_element(*BurgerLocators.LOGIN_SUBMIT_MAIN)
         btn_login_sumbit_main.click()
 
-# Клик по "Восстановить пароль"
+# Клик по ссылке "Восстановить пароль"
         btn_sumbit_recover_password=driver.find_element(*BurgerLocators.LOGIN_SUBMIT_RECOVER_PASSWORD)
         btn_sumbit_recover_password.click()
 
@@ -30,7 +32,7 @@ class TestFormForgotPassword:
 
 
         email_password = driver.find_element(*BurgerLocators.LOGIN_PASSWORD_INPUT)
-        email_password.send_keys("123456")
+        email_password.send_keys(*BurgersServiceTestData.AUTH_PASSWORD)
 
 
 # Клик по кнопке  "войти"

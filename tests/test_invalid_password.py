@@ -5,15 +5,17 @@ from data import BurgersServiceTestData
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-# Создаем класс для тестирования регисстрации при некорректном пароле
-class TestRegistrstionInvalidPassword:
-    def test_registration(self, driver):
-        driver.get("https://stellarburgers.nomoreparties.site/register")
+# Класс для тестирования формы Регистрация
+class TestRegistr:
+    def test_invalid_registration(self, driver):
 
+# Переход на страницу регистрации
+        driver.find_element(*BurgerLocators.LOGIN_SUBMIT_MAIN).click()
+        driver.find_element(*BurgerLocators.LOGIN_SUBMIT_REGISTER).click()
 
 # Заполнение полей регистрации
         name_input = driver.find_element(*BurgerLocators.LOGIN_NAME_INPUT)
-        name_input.send_keys("Ума")
+        name_input.send_keys(*BurgersServiceTestData.AUTH_NAME)
 
 
         email_input=driver.find_element(*BurgerLocators.LOGIN_EMAIL_INPUT)
@@ -27,8 +29,11 @@ class TestRegistrstionInvalidPassword:
 # Клик по кнопке  "Зарегистрироваться"
         driver.find_element(*BurgerLocators.LOGIN_SUBMIT).click()
 
+
+
         WebDriverWait(driver, settings.MAX_WAIT_TIME).until(
         EC.text_to_be_present_in_element(BurgerLocators.REGISTRATION_TITLE, 'Регистрация'))
-        regisrt_title = driver.find_element(*BurgerLocators.REGISTRATION_TITLE)
 
-        assert regisrt_title.is_displayed() and regisrt_title.text == 'Регистрация'
+
+
+        assert driver.find_element(*BurgerLocators.INCORRECT_PASSWORD_MSG).is_displayed()

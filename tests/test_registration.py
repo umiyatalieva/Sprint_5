@@ -5,21 +5,24 @@ from data import BurgersServiceTestData
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
+# Класс для тестирования формы Регистрация
+class TestRegistr:
+    def test_successful_registrstion(self,driver):
 
-# Создаем класс для тестирования формы "Зарегистррироваться"
-class TestRegistrstion:
-    def test_registration(self,driver):
-        driver.get("https://stellarburgers.nomoreparties.site/register")
+# Переход на страницу регистрации
+        driver.find_element(*BurgerLocators.LOGIN_SUBMIT_MAIN).click()
+        driver.find_element(*BurgerLocators.LOGIN_SUBMIT_REGISTER).click()
 
 # Заполнение полей регистрации
-        name_input = driver.find_element(*BurgerLocators.LOGIN_NAME_INPUT)
-        name_input.send_keys("Ума")
 
-        email_input=driver.find_element(*BurgerLocators.LOGIN_EMAIL_INPUT)
+        name_input = driver.find_element(*BurgerLocators.LOGIN_NAME_INPUT)
+        name_input.send_keys(*BurgersServiceTestData.AUTH_NAME)
+
+        email_input = driver.find_element(*BurgerLocators.LOGIN_EMAIL_INPUT)
         email_input.send_keys(*BurgersServiceTestData.AUTH_EMAIL_RANDOM)
 
         email_password = driver.find_element(*BurgerLocators.LOGIN_PASSWORD_INPUT)
-        email_password.send_keys("123456")
+        email_password.send_keys(*BurgersServiceTestData.AUTH_PASSWORD)
 
 
 # Клик по кнопке  "Зарегистрироваться"

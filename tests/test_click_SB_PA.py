@@ -1,22 +1,22 @@
 import settings
 from locators import BurgerLocators
 from conftest import driver
-
 from data import BurgersServiceTestData
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 
 
-# Создаем класс для тестирования перехода в "Конструктор" и по надписи Stellar Burgers через Личном кабинете
-class TestClickBtnPersonalAccount:
-    def test_registration(self,driver):
+# Создаем класс дл тестирования перехода через Личный кабинет
+class TestOnPersonalAccount:
 
-# Клик по кнопке "Личный кабинет"
+# Тестирование перехода по надписи Stellar Burger
+   def test_goto_stellar_burger(self,driver):
+
+# Клик по кнопке Личный кабинет
+
         btn_login_sumbit_main = driver.find_element(*BurgerLocators.LOGIN_SUBMIT_PERSONAL_ACCOUNT)
         btn_login_sumbit_main.click()
-
-
 
 
 # Заполнение полей входа

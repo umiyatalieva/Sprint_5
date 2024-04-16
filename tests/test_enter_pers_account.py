@@ -7,9 +7,11 @@ from data import BurgersServiceTestData
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-# Создаем класс для тестирования входа через "Личный кабинет"
-class TestClickBtnPersonalAccount:
-    def test_registration(self,driver):
+# Создаем класс для тестирования входа
+class TestLogin:
+
+# Тестирование вход через "Личный кабинет"
+    def test_enter_on_personal_account(self,driver):
 
 
 # Клик по кнопке "Личный кабинет"
@@ -20,7 +22,7 @@ class TestClickBtnPersonalAccount:
 # Заполнение полей входа
 
        driver.find_element(*BurgerLocators.LOGIN_EMAIL_INPUT).send_keys(*BurgersServiceTestData.AUTH_EMAIL)
-       driver.find_element(*BurgerLocators.LOGIN_PASSWORD_INPUT).send_keys("123456")
+       driver.find_element(*BurgerLocators.LOGIN_PASSWORD_INPUT).send_keys(*BurgersServiceTestData.AUTH_PASSWORD)
 
        WebDriverWait(driver, settings.MAX_WAIT_TIME).until(
        EC.text_to_be_present_in_element(BurgerLocators.LOGIN_SUBMIT_PERSONAL_ACCOUNT_BUTTON , "Войти"))
